@@ -5,6 +5,125 @@
 }
 
 body {
+    background: #ECE9E6; 
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); 
+
     font-family: 'Poppins', sans-serif;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.mobile-wrapper {
+    width: 400px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px 2px #3333331a;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+header {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+header input {
+    background-color: #eee;
+    border: none;
+    border-radius: 3px;
+    padding: .5rem 1rem;
+    width: 280px;
+    font-family: inherit;
+}
+
+header button {
+    background-color: transparent;
+    border: none;
+    color: #aaa;
+    font-size: 1.5rem;
+    margin-left: 10px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.favourite-wrapper {
+    padding: .5rem;
+    text-align: center;
+    background-color: #e5e2e7;
+}
+
+.favourite-meals {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    overflow: auto;
+}
+
+.favourite-meals li {
+    font-size: .6rem;
+    width: 100px;
+}
+
+.favourite-meals li img {
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    box-shadow: 0 0 10px 2px #3333331a;
+    object-fit: cover;
+    width: 75px;
+    height: 75px;
+}
+
+.meal-wrapper {
+    margin: 2rem;
+    box-shadow: 0 0 10px 2px #3333331a;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.meal-header {
+    position: relative;
+}
+
+.random {
+    position: absolute;
+    background-color: #FFFFFF;
+    z-index: 2;
+    margin: 5px;
+    padding: 0.25rem 0.5rem;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.meal-header img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.meal-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.meal-body h4 {
+    margin: 0;
+}
+
+.meal-body .fav-btn {
+    border: none;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: rgb(201, 199, 199);
+    cursor: pointer;
+}
+
+.meal-body .fav-btn.active {
+    color: #e5e2e7;
 }
