@@ -1,4 +1,5 @@
-const mealsEl = document.getElementById("meals-wrapper");
+const mealsElement = document.getElementById("meals-wrapper");
+const favouriteContainer = document.getElementById("favourite-wrapper");
 
 async function getRandomMeal() {
     const resp = await fetch(
@@ -37,12 +38,11 @@ function addMeal(mealData, random = false) {
 
     meal.innerHTML = `
         <div class="meal-header">
-            ${
-                random
-                    ? `
+            ${random
+            ? `
             <span class="random"> Random Recipe </span>`
-                    : ""
-            }
+            : ""
+        }
             <img
                 src="${mealData.strMealThumb}"
                 alt="${mealData.strMeal}"
@@ -66,15 +66,17 @@ function addMeal(mealData, random = false) {
             addMealLocalStorage(mealData.idMeal);
             btn.classList.add("active");
         }
+        
+        fetchFavouriteMeals();
     });
 
-    mealsEl.appendChild(meal);
+    mealsElement.appendChild(meal);
 }
 
 const addMealLocalStorage = (mealIds) => {
-  const mealsIds = getMealsLocalStorage();
-  
-  localStorage.setItem('mealIds', JSON.stringify([...mealsIds, mealIds]));
+    const mealsIds = getMealsLocalStorage();
+
+    localStorage.setItem('mealIds', JSON.stringify([...mealsIds, mealIds]));
 }
 
 const removeMealLocaleStorage = (mealId) => {
@@ -90,17 +92,38 @@ const getMealsLocalStorage = () => {
 }
 
 const fetchFavouriteMeals = async () => {
-    const mealIds = getMealsLocalStorage();
+    favouriteContainer.innerHTML = "";
 
-    const meals = [];
+    const mealIds = getMealsLocalStorage();
 
     for (let i = 0; i < mealIds.length; i++) {
         const mealId = mealIds[i];
         meal = await getMealById(mealId);
-        meals.push(meal);
+        addFavouriteMeal(meal);
     }
-
-    console.log(meals)
 }
 
 fetchFavouriteMeals();
+
+function addFavouriteMeal(mealData) {
+    
+    const favouriteMeal = document.createElement("li");
+
+    favouriteMeal.innerHTML = `
+        <img 
+            alt="${mealData.strMeal}" 
+            src="${mealData.strMealThumb}">
+        <span>${mealData.strMeal}</span>
+        <button class="close-button"><i class="fas fa-times"></i></button>
+    `;
+
+    const btn = favouriteMeal.querySelector('.close-button');
+
+    btn.addEventListener('click', () => {
+        removeMealLocaleStorage(mealData.idMeal);
+
+        fetchFavouriteMeals();
+    })
+
+    favouriteContainer.appendChild(favouriteMeal);
+}
