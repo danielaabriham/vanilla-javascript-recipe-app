@@ -13,11 +13,13 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+    align-items: center;
     min-height: 100vh;
 }
 
 .mobile-wrapper {
-    width: 400px;
+    height: 100%;
+    width: 350px;
     background-color: #FFFFFF;
     box-shadow: 0 0 10px 2px #3333331a;
     border-radius: 5px;
@@ -78,8 +80,8 @@ img {
     height: 75px;
 }
 
-.meal-wrapper {
-    margin: 2rem;
+.meals-wrapper {
+    margin: 1rem;
     box-shadow: 0 0 10px 2px #3333331a;
     border-radius: 5px;
     overflow: hidden;
@@ -120,10 +122,10 @@ img {
     border: none;
     font-size: 1.2rem;
     background-color: transparent;
-    color: rgb(201, 199, 199);
+    color: #e5e2e7;
     cursor: pointer;
 }
 
 .meal-body .fav-btn.active {
-    color: #e5e2e7;
+    color: rgb(85, 81, 81);
 }
