@@ -110,6 +110,7 @@ img {
     box-shadow: 0 0 10px 2px #3333331a;
     border-radius: 5px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .meal-header {
